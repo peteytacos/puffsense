@@ -220,55 +220,59 @@ alter table sailor_achievements enable row level security;
 alter table recommendation_requests enable row level security;
 
 -- Helper: get current user's team_id
-create or replace function auth.team_id()
+create or replace function public.get_team_id()
 returns uuid
 language sql
 stable
+security definer
 as $$
-  select team_id from profiles where id = auth.uid()
+  select team_id from public.profiles where id = auth.uid()
 $$;
 
 -- Helper: get current user's role
-create or replace function auth.user_role()
+create or replace function public.get_user_role()
 returns user_role
 language sql
 stable
+security definer
 as $$
-  select role from profiles where id = auth.uid()
+  select role from public.profiles where id = auth.uid()
 $$;
 
 -- Helper: is current user an independent coach?
-create or replace function auth.is_independent_coach()
+create or replace function public.is_independent_coach()
 returns boolean
 language sql
 stable
+security definer
 as $$
-  select is_independent_coach from profiles where id = auth.uid()
+  select is_independent_coach from public.profiles where id = auth.uid()
 $$;
 
 -- Helper: can current user act as coach? (admin, coach, or independent parent)
-create or replace function auth.can_coach()
+create or replace function public.can_coach()
 returns boolean
 language sql
 stable
+security definer
 as $$
   select role in ('admin', 'coach') or is_independent_coach
-  from profiles where id = auth.uid()
+  from public.profiles where id = auth.uid()
 $$;
 
 -- TEAMS
 create policy "Users can view their own team"
   on teams for select
-  using (id = auth.team_id());
+  using (id = public.get_team_id());
 
 create policy "Admins and independent coaches can update their team"
   on teams for update
-  using (id = auth.team_id() and (auth.user_role() = 'admin' or auth.is_independent_coach()));
+  using (id = public.get_team_id() and (public.get_user_role() = 'admin' or public.is_independent_coach()));
 
 -- PROFILES
 create policy "Users can view profiles in their team"
   on profiles for select
-  using (team_id = auth.team_id());
+  using (team_id = public.get_team_id());
 
 create policy "Users can update their own profile"
   on profiles for update
@@ -281,20 +285,20 @@ create policy "Users can insert their own profile"
 -- BOAT CLASSES
 create policy "Users can view boat classes in their team"
   on boat_classes for select
-  using (team_id = auth.team_id());
+  using (team_id = public.get_team_id());
 
 create policy "Admins and independent coaches can manage boat classes"
   on boat_classes for all
-  using (team_id = auth.team_id() and (auth.user_role() = 'admin' or auth.is_independent_coach()));
+  using (team_id = public.get_team_id() and (public.get_user_role() = 'admin' or public.is_independent_coach()));
 
 -- RUBRICS
 create policy "Users can view rubrics in their team"
   on rubrics for select
-  using (team_id = auth.team_id());
+  using (team_id = public.get_team_id());
 
 create policy "Coaches can manage rubrics"
   on rubrics for all
-  using (team_id = auth.team_id() and auth.can_coach());
+  using (team_id = public.get_team_id() and public.can_coach());
 
 -- RUBRIC CRITERIA
 create policy "Users can view criteria for their team's rubrics"
@@ -303,7 +307,7 @@ create policy "Users can view criteria for their team's rubrics"
     exists (
       select 1 from rubrics
       where rubrics.id = rubric_criteria.rubric_id
-      and rubrics.team_id = auth.team_id()
+      and rubrics.team_id = public.get_team_id()
     )
   );
 
@@ -313,8 +317,8 @@ create policy "Coaches can manage criteria"
     exists (
       select 1 from rubrics
       where rubrics.id = rubric_criteria.rubric_id
-      and rubrics.team_id = auth.team_id()
-      and auth.can_coach()
+      and rubrics.team_id = public.get_team_id()
+      and public.can_coach()
     )
   );
 
@@ -325,23 +329,23 @@ create policy "Coaches see all sailors in team"
     exists (
       select 1 from profiles p
       where p.id = sailor_profiles.profile_id
-      and p.team_id = auth.team_id()
+      and p.team_id = public.get_team_id()
     )
-    and (auth.can_coach() or sailor_profiles.profile_id = auth.uid() or sailor_profiles.parent_id = auth.uid())
+    and (public.can_coach() or sailor_profiles.profile_id = auth.uid() or sailor_profiles.parent_id = auth.uid())
   );
 
 create policy "Coaches and parents can create sailor profiles"
   on sailor_profiles for insert
-  with check (auth.can_coach() or parent_id = auth.uid());
+  with check (public.can_coach() or parent_id = auth.uid());
 
 -- SESSIONS
 create policy "Users can view sessions in their team"
   on sessions for select
-  using (team_id = auth.team_id());
+  using (team_id = public.get_team_id());
 
 create policy "Coaches can create and manage sessions"
   on sessions for all
-  using (team_id = auth.team_id() and auth.can_coach());
+  using (team_id = public.get_team_id() and public.can_coach());
 
 -- EVALUATIONS
 create policy "Coaches see all evaluations in team"
@@ -350,7 +354,7 @@ create policy "Coaches see all evaluations in team"
     exists (
       select 1 from sessions s
       where s.id = evaluations.session_id
-      and s.team_id = auth.team_id()
+      and s.team_id = public.get_team_id()
     )
   );
 
@@ -376,7 +380,7 @@ create policy "Sailors see their own evaluations"
 
 create policy "Coaches can create evaluations"
   on evaluations for insert
-  with check (auth.can_coach());
+  with check (public.can_coach());
 
 -- EVALUATION SCORES
 create policy "Users can view scores they can see evaluations for"
@@ -390,7 +394,7 @@ create policy "Users can view scores they can see evaluations for"
 
 create policy "Coaches can manage scores"
   on evaluation_scores for all
-  using (auth.can_coach());
+  using (public.can_coach());
 
 -- AI INSIGHTS
 create policy "Coaches see all insights in team"
@@ -400,8 +404,8 @@ create policy "Coaches see all insights in team"
       select 1 from sailor_profiles sp
       join profiles p on p.id = sp.profile_id
       where sp.id = ai_insights.sailor_id
-      and p.team_id = auth.team_id()
-      and auth.can_coach()
+      and p.team_id = public.get_team_id()
+      and public.can_coach()
     )
   );
 
@@ -442,7 +446,7 @@ create policy "Parents and coaches can view goals"
     exists (
       select 1 from sailor_profiles sp
       where sp.id = sailor_goals.sailor_id
-      and (sp.parent_id = auth.uid() or auth.can_coach())
+      and (sp.parent_id = auth.uid() or public.can_coach())
     )
   );
 
@@ -463,7 +467,7 @@ create policy "Parents and coaches can view journal entries"
     exists (
       select 1 from sailor_profiles sp
       where sp.id = journal_entries.sailor_id
-      and (sp.parent_id = auth.uid() or auth.can_coach())
+      and (sp.parent_id = auth.uid() or public.can_coach())
     )
   );
 
@@ -480,7 +484,7 @@ create policy "Users can view sailor achievements in their team"
       select 1 from sailor_profiles sp
       join profiles p on p.id = sp.profile_id
       where sp.id = sailor_achievements.sailor_id
-      and p.team_id = auth.team_id()
+      and p.team_id = public.get_team_id()
     )
   );
 
@@ -498,25 +502,7 @@ create policy "Recipients can update requests"
   using (sent_to = auth.uid());
 
 -- ============================================================
--- Auto-create profile on signup
+-- Profile creation is handled by the app's signup server actions
+-- (src/app/(auth)/actions.ts) rather than a database trigger,
+-- because Supabase SQL Editor cannot create triggers on auth.users.
 -- ============================================================
-create or replace function handle_new_user()
-returns trigger
-language plpgsql
-security definer set search_path = ''
-as $$
-begin
-  insert into public.profiles (id, full_name, email, role)
-  values (
-    new.id,
-    coalesce(new.raw_user_meta_data ->> 'full_name', ''),
-    new.email,
-    coalesce((new.raw_user_meta_data ->> 'role')::public.user_role, 'parent')
-  );
-  return new;
-end;
-$$;
-
-create trigger on_auth_user_created
-  after insert on auth.users
-  for each row execute function handle_new_user();
