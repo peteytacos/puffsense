@@ -5,7 +5,12 @@ import { redirect } from "next/navigation";
 import type { UserRole } from "@/types/database";
 
 export async function login(formData: FormData) {
-  const supabase = await createClient();
+  let supabase;
+  try {
+    supabase = await createClient();
+  } catch {
+    return { error: "Service unavailable. Please try again later." };
+  }
 
   const { error } = await supabase.auth.signInWithPassword({
     email: formData.get("email") as string,
@@ -20,7 +25,12 @@ export async function login(formData: FormData) {
 }
 
 export async function signupClub(formData: FormData) {
-  const supabase = await createClient();
+  let supabase;
+  try {
+    supabase = await createClient();
+  } catch {
+    return { error: "Service unavailable. Please try again later." };
+  }
 
   const inviteCode = formData.get("invite-code") as string;
   const fullName = formData.get("name") as string;
@@ -55,20 +65,30 @@ export async function signupClub(formData: FormData) {
     return { error: authError.message };
   }
 
-  // Update profile with team_id (use rpc or raw update since profile was just created by trigger)
+  // Create profile with team_id (no trigger — we insert directly)
   if (authData.user) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await (supabase as any)
       .from("profiles")
-      .update({ team_id: team.id })
-      .eq("id", authData.user.id);
+      .upsert({
+        id: authData.user.id,
+        full_name: fullName,
+        email,
+        role: role as UserRole,
+        team_id: team.id,
+      });
   }
 
   redirect("/dashboard");
 }
 
 export async function signupIndependent(formData: FormData) {
-  const supabase = await createClient();
+  let supabase;
+  try {
+    supabase = await createClient();
+  } catch {
+    return { error: "Service unavailable. Please try again later." };
+  }
 
   const fullName = formData.get("name") as string;
   const email = formData.get("email") as string;
@@ -113,24 +133,28 @@ export async function signupIndependent(formData: FormData) {
     return { error: "Failed to create family team." };
   }
 
-  // Update parent profile with team and independent coach flag
+  // Create parent profile with team and independent coach flag (no trigger — we insert directly)
   await db
     .from("profiles")
-    .update({
+    .upsert({
+      id: authData.user.id,
+      full_name: fullName,
+      email,
+      role: "parent",
       team_id: team.id,
       is_independent_coach: true,
-    })
-    .eq("id", authData.user.id);
+    });
 
   // Create a boat class if selected
   let boatClassId: string | null = null;
   if (boatClass) {
     const boatClassNames: Record<string, string> = {
-      opti: "Optimist (Opti)",
+      opti: "Opti",
       "420": "420",
       laser: "Laser / ILCA",
       fj: "Flying Junior (FJ)",
       sunfish: "Sunfish",
+      sabot: "Sabot",
       c420: "Club 420",
       other: "Other",
     };
