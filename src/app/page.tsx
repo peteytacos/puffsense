@@ -1,16 +1,10 @@
 import { PuffLogo } from "@/components/puff-logo";
 import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Anchor,
   BarChart3,
   BookOpen,
   Brain,
+  ChevronRight,
   Medal,
   MessageSquare,
   Target,
@@ -21,56 +15,70 @@ import {
 
 export default function MarketingPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       {/* Nav */}
-      <nav className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-3">
-          <div className="flex items-center gap-2">
-            <PuffLogo className="w-8 h-8" />
-            <span className="font-bold text-lg text-primary">PuffSense</span>
+      <nav className="border-b border-border/50 bg-background/80 backdrop-blur-md sticky top-0 z-50">
+        <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
+          <div className="flex items-center gap-2.5">
+            <PuffLogo className="w-7 h-7" />
+            <span className="font-semibold text-base tracking-tight">
+              PuffSense
+            </span>
           </div>
-          <div className="flex items-center gap-6">
-            <a href="#features" className="text-sm text-muted-foreground hover:text-foreground">
+          <div className="flex items-center gap-8">
+            <a
+              href="#features"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
               Features
             </a>
-            <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground">
+            <a
+              href="#how-it-works"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
               How It Works
             </a>
-            <a href="#pricing" className="text-sm text-muted-foreground hover:text-foreground">
+            <a
+              href="#pricing"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
               Pricing
             </a>
-            <Button size="sm" variant="outline" asChild>
-              <a href="/login">Log In</a>
-            </Button>
-            <Button size="sm" asChild>
-              <a href="/signup">Get Started</a>
-            </Button>
+            <div className="flex items-center gap-3">
+              <Button size="sm" variant="ghost" asChild>
+                <a href="/login">Log In</a>
+              </Button>
+              <Button size="sm" asChild>
+                <a href="/signup">Get Started</a>
+              </Button>
+            </div>
           </div>
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="py-24 px-6">
+      <section className="pt-24 pb-16 px-6">
         <div className="mx-auto max-w-4xl text-center">
-          <PuffLogo className="w-28 h-28 mx-auto mb-8" />
-          <h1 className="text-5xl font-bold tracking-tight text-foreground mb-4">
-            A puff ahead of the competition
-          </h1>
-          <p className="text-xl text-muted-foreground mb-2">
-            Smarter coaching for developing sailors
-          </p>
-          <p className="text-lg text-accent font-semibold mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border/60 bg-card/50 text-sm text-muted-foreground mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
             From Dinghies to D1
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
+            Smarter coaching for
+            <br />
+            <span className="text-primary">developing sailors</span>
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+            AI-driven feedback that surfaces insights before sailors know to
+            ask. Powered by expert rubrics, coach evaluations, and real
+            conditions data.
           </p>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-            PuffSense is an AI-driven coaching system that delivers anticipatory,
-            context-aware feedback — surfacing insights and corrections before
-            sailors know to ask. Powered by expert rubrics, coach evaluations, and
-            real sailing conditions.
-          </p>
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-3 justify-center">
             <Button size="lg" asChild>
-              <a href="/signup">Start Free</a>
+              <a href="/signup">
+                Start Free
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </a>
             </Button>
             <Button size="lg" variant="outline" asChild>
               <a href="#features">See Features</a>
@@ -79,131 +87,188 @@ export default function MarketingPage() {
         </div>
       </section>
 
+      {/* Dashboard Preview */}
+      <section className="pb-20 px-6">
+        <div className="mx-auto max-w-5xl">
+          <div className="rounded-xl border border-border/60 bg-card p-1.5 shadow-2xl shadow-primary/5">
+            <div className="rounded-lg bg-background border border-border/40 p-6 md:p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <PuffLogo className="w-6 h-6 text-primary" />
+                <span className="text-sm font-medium">Dashboard</span>
+                <div className="flex-1" />
+                <div className="flex gap-2">
+                  <div className="w-20 h-6 rounded bg-muted" />
+                  <div className="w-16 h-6 rounded bg-primary/20" />
+                </div>
+              </div>
+              <div className="grid grid-cols-4 gap-3 mb-6">
+                {["12 Sailors", "8 Rubrics", "24 Sessions", "47 Insights"].map(
+                  (label) => (
+                    <div
+                      key={label}
+                      className="rounded-lg border border-border/40 bg-card p-3"
+                    >
+                      <div className="text-xs text-muted-foreground mb-1">
+                        {label.split(" ")[1]}
+                      </div>
+                      <div className="text-lg font-semibold">
+                        {label.split(" ")[0]}
+                      </div>
+                    </div>
+                  )
+                )}
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-lg border border-border/40 bg-card p-4 h-32">
+                  <div className="text-xs text-muted-foreground mb-3">
+                    Recent Evaluations
+                  </div>
+                  <div className="space-y-2">
+                    <div className="h-2.5 rounded bg-muted w-full" />
+                    <div className="h-2.5 rounded bg-muted w-3/4" />
+                    <div className="h-2.5 rounded bg-muted w-5/6" />
+                  </div>
+                </div>
+                <div className="rounded-lg border border-border/40 bg-card p-4 h-32">
+                  <div className="text-xs text-muted-foreground mb-3">
+                    AI Insights
+                  </div>
+                  <div className="space-y-2">
+                    <div className="h-2.5 rounded bg-primary/15 w-full" />
+                    <div className="h-2.5 rounded bg-primary/15 w-2/3" />
+                    <div className="h-2.5 rounded bg-primary/15 w-4/5" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* For Clubs / For Parents */}
-      <section className="py-16 px-6 bg-secondary/50">
-        <div className="mx-auto max-w-5xl grid md:grid-cols-2 gap-8">
-          <Card className="border-2 border-primary/20">
-            <CardHeader>
-              <div className="flex items-center gap-2 mb-2">
-                <Users className="w-6 h-6 text-primary" />
-                <CardTitle className="text-xl">For Sailing Clubs</CardTitle>
+      <section className="py-16 px-6">
+        <div className="mx-auto max-w-5xl grid md:grid-cols-2 gap-4">
+          <div className="rounded-xl border border-border/60 bg-card p-6">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Users className="w-4 h-4 text-primary" />
               </div>
-              <CardDescription className="text-base leading-relaxed">
-                Define rubrics for each boat class, assign coaches, and give every
-                family in your program clarity on what their sailor needs to
-                advance. Eliminate confusion about progression requirements.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-          <Card className="border-2 border-accent/40">
-            <CardHeader>
-              <div className="flex items-center gap-2 mb-2">
-                <Anchor className="w-6 h-6 text-accent" />
-                <CardTitle className="text-xl">For Sailing Parents</CardTitle>
+              <h3 className="font-semibold text-lg">For Sailing Clubs</h3>
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Define rubrics for each boat class, assign coaches, and give every
+              family clarity on what their sailor needs to advance.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border/60 bg-card p-6">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center">
+                <Target className="w-4 h-4 text-accent" />
               </div>
-              <CardDescription className="text-base leading-relaxed">
-                No club? No problem. Track your child&apos;s sailing development
-                independently. Create rubrics with AI, log sessions, and get
-                personalized coaching insights — all from Puff.
-              </CardDescription>
-            </CardHeader>
-          </Card>
+              <h3 className="font-semibold text-lg">For Sailing Parents</h3>
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              No club? No problem. Track your child&apos;s development
+              independently with AI-powered rubrics and coaching insights.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Features */}
       <section id="features" className="py-20 px-6">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold text-center mb-4">
-            Everything your sailor needs to level up
-          </h2>
-          <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-            PuffSense combines coach expertise, rubric-based progression, and AI
-            insights into one platform.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight mb-3">
+              Everything your sailor needs
+            </h2>
+            <p className="text-muted-foreground max-w-lg mx-auto">
+              Coach expertise, rubric-based progression, and AI insights in one
+              platform.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <FeatureCard
-              icon={<Brain className="w-6 h-6" />}
+              icon={<Brain className="w-4 h-4" />}
               title="AI Coaching Insights"
-              description="Claude-powered feedback that surfaces what your sailor should focus on — before they know to ask."
+              description="Feedback that surfaces what to focus on — before they know to ask."
             />
             <FeatureCard
-              icon={<Target className="w-6 h-6" />}
-              title="Rubric-Based Progression"
-              description="Club-defined rubrics show exactly what's needed to advance to the next boat class. No more guessing."
+              icon={<Target className="w-4 h-4" />}
+              title="Rubric Progression"
+              description="Know exactly what's needed to advance to the next boat class."
             />
             <FeatureCard
-              icon={<TreePine className="w-6 h-6" />}
-              title="Skill Tree & Progress Map"
-              description="Visual journey from current boat class to the next. See locked, in-progress, and mastered skills at a glance."
+              icon={<TreePine className="w-4 h-4" />}
+              title="Skill Tree"
+              description="Visual map from current level to the next with locked, active, and mastered skills."
             />
             <FeatureCard
-              icon={<MessageSquare className="w-6 h-6" />}
+              icon={<MessageSquare className="w-4 h-4" />}
               title="AI Rubric Builder"
-              description="Chat with Puff to create custom rubrics. Tell the AI about your sailor and get a tailored skill progression plan."
+              description="Chat with AI to create custom rubrics tailored to your sailor."
             />
             <FeatureCard
-              icon={<BookOpen className="w-6 h-6" />}
+              icon={<BookOpen className="w-4 h-4" />}
               title="Session Journal"
-              description="Sailors log their own notes after each session. AI uses their reflections to personalize coaching insights."
+              description="Sailors log reflections. AI uses them to personalize coaching."
             />
             <FeatureCard
-              icon={<Medal className="w-6 h-6" />}
-              title="Achievements & Badges"
-              description="Gamified milestones keep young sailors motivated. Earn badges for mastering skills and hitting goals."
+              icon={<Medal className="w-4 h-4" />}
+              title="Achievements"
+              description="Milestone badges keep young sailors motivated and on track."
             />
             <FeatureCard
-              icon={<BarChart3 className="w-6 h-6" />}
+              icon={<BarChart3 className="w-4 h-4" />}
               title="Adaptive Dashboard"
-              description="UI adapts by boat class: playful for Opti sailors, data-driven for 420/Laser and college racing."
+              description="UI adapts by level: playful for Opti, data-driven for racing."
             />
             <FeatureCard
-              icon={<Wind className="w-6 h-6" />}
-              title="Session & Conditions Tracking"
-              description="Coaches log wind, weather, and water conditions alongside evaluations for full context."
+              icon={<Wind className="w-4 h-4" />}
+              title="Conditions Tracking"
+              description="Wind, weather, and water logged alongside every evaluation."
             />
             <FeatureCard
-              icon={<Users className="w-6 h-6" />}
+              icon={<Users className="w-4 h-4" />}
               title="Parent Dashboard"
-              description="See your child's progress, rubric status, and AI-recommended next steps. Know exactly what to sign up for."
+              description="See progress, rubric status, and AI-recommended next steps."
             />
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 px-6 bg-secondary/50">
+      <section id="how-it-works" className="py-20 px-6 border-t border-border/40">
         <div className="mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-3xl font-bold tracking-tight text-center mb-12">
             How It Works
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <StepCard
               step={1}
               title="Sign Up"
-              description="Join your sailing club's program or start tracking independently as a parent."
+              description="Join your club's program or start tracking independently as a parent."
             />
             <StepCard
               step={2}
               title="Set Up Rubrics"
-              description="Use your club's rubrics or chat with Puff to create custom ones for your sailor's boat class."
+              description="Use club rubrics or build custom ones with AI for your sailor's boat class."
             />
             <StepCard
               step={3}
-              title="Get Coaching Insights"
-              description="After each evaluation, AI generates focus areas, goal nudges, and next-step recommendations."
+              title="Get Insights"
+              description="AI generates focus areas, goal nudges, and recommendations after each evaluation."
             />
           </div>
         </div>
       </section>
 
-      {/* Pricing Placeholder */}
-      <section id="pricing" className="py-20 px-6">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl font-bold mb-4">Pricing</h2>
+      {/* Pricing */}
+      <section id="pricing" className="py-20 px-6 border-t border-border/40">
+        <div className="mx-auto max-w-md text-center">
+          <h2 className="text-3xl font-bold tracking-tight mb-3">Pricing</h2>
           <p className="text-muted-foreground mb-8">
-            Coming soon. PuffSense will offer free and premium tiers for families
-            and clubs.
+            Free and premium tiers for families and clubs. Coming soon.
           </p>
           <Button size="lg" asChild>
             <a href="/signup">Join the Waitlist</a>
@@ -212,13 +277,11 @@ export default function MarketingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t py-8 px-6">
+      <footer className="border-t border-border/50 py-8 px-6">
         <div className="mx-auto max-w-6xl flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <PuffLogo className="w-6 h-6" />
-            <span className="text-sm text-muted-foreground">
-              PuffSense — Smarter coaching for developing sailors
-            </span>
+            <PuffLogo className="w-5 h-5 text-muted-foreground" />
+            <span className="text-sm text-muted-foreground">PuffSense</span>
           </div>
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} PuffSense
@@ -239,13 +302,15 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <Card>
-      <CardHeader>
-        <div className="text-primary mb-2">{icon}</div>
-        <CardTitle className="text-lg">{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-      </CardHeader>
-    </Card>
+    <div className="group rounded-xl border border-border/60 bg-card p-5 hover:border-border transition-colors">
+      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-3">
+        {icon}
+      </div>
+      <h3 className="font-medium text-sm mb-1">{title}</h3>
+      <p className="text-muted-foreground text-sm leading-relaxed">
+        {description}
+      </p>
+    </div>
   );
 }
 
@@ -260,11 +325,13 @@ function StepCard({
 }) {
   return (
     <div className="text-center">
-      <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold mx-auto mb-4">
+      <div className="w-10 h-10 rounded-full border-2 border-primary text-primary flex items-center justify-center text-sm font-semibold mx-auto mb-4">
         {step}
       </div>
-      <h3 className="font-semibold text-lg mb-2">{title}</h3>
-      <p className="text-muted-foreground text-sm">{description}</p>
+      <h3 className="font-semibold mb-2">{title}</h3>
+      <p className="text-muted-foreground text-sm leading-relaxed">
+        {description}
+      </p>
     </div>
   );
 }

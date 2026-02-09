@@ -147,7 +147,7 @@ export default function NewRubricPage() {
 
   return (
     <div className="max-w-2xl">
-      <h1 className="text-2xl font-bold mb-2">Create Rubric</h1>
+      <h1 className="text-2xl font-semibold tracking-tight mb-2">Create Rubric</h1>
       <p className="text-muted-foreground mb-8">
         Define the skills needed to advance in a boat class
       </p>
@@ -189,7 +189,7 @@ export default function NewRubricPage() {
                 id="boat-class"
                 value={boatClassId}
                 onChange={(e) => setBoatClassId(e.target.value)}
-                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 required
               >
                 <option value="">Select a boat class</option>
@@ -253,7 +253,7 @@ export default function NewRubricPage() {
                     onChange={(e) =>
                       updateCriterion(index, "level_required", e.target.value)
                     }
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                    className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                   >
                     <option value="developing">Developing</option>
                     <option value="proficient">Proficient</option>

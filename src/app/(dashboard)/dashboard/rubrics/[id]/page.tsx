@@ -60,9 +60,9 @@ export default async function RubricDetailPage({
   } | null;
 
   const levelColors: Record<string, string> = {
-    developing: "bg-yellow-100 text-yellow-800",
-    proficient: "bg-blue-100 text-blue-800",
-    advanced: "bg-green-100 text-green-800",
+    developing: "bg-amber-500/15 text-amber-400",
+    proficient: "bg-primary/15 text-primary",
+    advanced: "bg-emerald-500/15 text-emerald-400",
   };
 
   return (
@@ -78,7 +78,7 @@ export default async function RubricDetailPage({
 
       <div className="flex items-start justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold">{rubric.name}</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">{rubric.name}</h1>
           {rubric.description && (
             <p className="text-muted-foreground mt-1">{rubric.description}</p>
           )}

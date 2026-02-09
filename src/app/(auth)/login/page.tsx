@@ -54,11 +54,11 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-secondary/30">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-          <PuffLogo className="w-16 h-16 mx-auto mb-2" />
-          <CardTitle className="text-2xl">Welcome back</CardTitle>
+          <PuffLogo className="w-7 h-7 mx-auto mb-3" />
+          <CardTitle className="text-xl font-semibold tracking-tight">Welcome back</CardTitle>
           <CardDescription>
             Sign in to your PuffSense account
           </CardDescription>

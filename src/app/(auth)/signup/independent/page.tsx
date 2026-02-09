@@ -63,7 +63,7 @@ function IndependentSignupForm() {
         <select
           id="boat-class"
           name="boat-class"
-          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
           <option value="">Select a boat class</option>
           <option value="opti">Optimist (Opti)</option>
@@ -84,11 +84,11 @@ function IndependentSignupForm() {
 
 export default function IndependentSignupPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-secondary/30">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-          <PuffLogo className="w-16 h-16 mx-auto mb-2" />
-          <CardTitle className="text-2xl">Track Your Sailor</CardTitle>
+          <PuffLogo className="w-7 h-7 mx-auto mb-3" />
+          <CardTitle className="text-xl font-semibold tracking-tight">Track Your Sailor</CardTitle>
           <CardDescription>
             Create your account to start tracking your child&apos;s sailing
             development

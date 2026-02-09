@@ -63,7 +63,7 @@ function ClubSignupForm() {
         <select
           id="role"
           name="role"
-          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
           <option value="parent">Parent / Guardian</option>
           <option value="sailor">Sailor</option>
@@ -79,11 +79,11 @@ function ClubSignupForm() {
 
 export default function ClubSignupPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-secondary/30">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-          <PuffLogo className="w-16 h-16 mx-auto mb-2" />
-          <CardTitle className="text-2xl">Join Your Club</CardTitle>
+          <PuffLogo className="w-7 h-7 mx-auto mb-3" />
+          <CardTitle className="text-xl font-semibold tracking-tight">Join Your Club</CardTitle>
           <CardDescription>
             Enter your club&apos;s invite code and create your account
           </CardDescription>
