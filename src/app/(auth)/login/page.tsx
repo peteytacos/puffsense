@@ -1,3 +1,5 @@
+"use client";
+
 import { PuffLogo } from "@/components/puff-logo";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,6 +12,45 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { useActionState } from "react";
+import { login } from "../actions";
+
+function LoginForm() {
+  const [state, formAction, pending] = useActionState(
+    async (_prev: { error: string } | null, formData: FormData) => {
+      const result = await login(formData);
+      return result ?? null;
+    },
+    null
+  );
+
+  return (
+    <form action={formAction} className="space-y-4">
+      {state?.error && (
+        <div className="text-sm text-destructive bg-destructive/10 p-3 rounded-md">
+          {state.error}
+        </div>
+      )}
+      <div className="space-y-2">
+        <Label htmlFor="email">Email</Label>
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="sailor@example.com"
+          required
+        />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="password">Password</Label>
+        <Input id="password" name="password" type="password" required />
+      </div>
+      <Button type="submit" className="w-full" disabled={pending}>
+        {pending ? "Signing in..." : "Sign In"}
+      </Button>
+    </form>
+  );
+}
 
 export default function LoginPage() {
   return (
@@ -23,23 +64,7 @@ export default function LoginPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="sailor@example.com"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" />
-            </div>
-            <Button type="submit" className="w-full">
-              Sign In
-            </Button>
-          </form>
+          <LoginForm />
           <p className="text-sm text-muted-foreground text-center mt-4">
             Don&apos;t have an account?{" "}
             <Link
