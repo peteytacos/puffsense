@@ -126,6 +126,20 @@
   }
 }
 
+/* Clouds: continuous drift from left to right */
+@keyframes cloud-drift {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-clouds {
+  animation: cloud-drift 90s linear infinite;
+}
+
 /* Sailboat: slide in from right then rock gently */
 @keyframes sail-in {
   0% {
