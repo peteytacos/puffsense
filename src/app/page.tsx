@@ -84,90 +84,165 @@ export default function MarketingPage() {
             <circle cx="130" cy="130" r="48" fill="oklch(0.95 0.07 75)" opacity="0.7" />
           </svg>
 
-          {/* ── Clouds: evenly spread, clear of sun (sun ≈ 70-95% x, 0-15% y) ── */}
-
-          {/* Cloud 1 — left edge, upper */}
-          <svg className="absolute top-[4%] -left-[4%] w-[18%] md:w-[14%]" viewBox="0 0 300 180" fill="none">
-            <ellipse cx="150" cy="115" rx="140" ry="45" fill="oklch(0.93 0.025 275)" opacity="0.3" />
-            <ellipse cx="150" cy="95" rx="110" ry="55" fill="oklch(0.95 0.02 272)" opacity="0.5" />
-            <circle cx="120" cy="70" r="48" fill="oklch(0.96 0.02 270)" opacity="0.6" />
-            <circle cx="185" cy="72" r="42" fill="oklch(0.95 0.025 272)" opacity="0.55" />
-            <circle cx="150" cy="58" r="36" fill="oklch(0.97 0.015 265)" opacity="0.65" />
-          </svg>
-
-          {/* Cloud 2 — ~12%, lower */}
-          <svg className="absolute top-[48%] left-[6%] w-[16%] md:w-[12%]" viewBox="0 0 250 140" fill="none">
-            <ellipse cx="125" cy="90" rx="115" ry="38" fill="oklch(0.94 0.02 275)" opacity="0.3" />
-            <ellipse cx="125" cy="72" rx="90" ry="42" fill="oklch(0.95 0.02 272)" opacity="0.45" />
-            <circle cx="100" cy="52" r="38" fill="oklch(0.96 0.02 270)" opacity="0.55" />
-            <circle cx="155" cy="55" r="32" fill="oklch(0.95 0.02 272)" opacity="0.5" />
-          </svg>
-
-          {/* Cloud 3 — ~22%, upper */}
-          <svg className="absolute top-[8%] left-[18%] w-[14%] md:w-[11%]" viewBox="0 0 220 130" fill="none">
-            <ellipse cx="110" cy="82" rx="100" ry="34" fill="oklch(0.94 0.02 275)" opacity="0.3" />
-            <ellipse cx="110" cy="65" rx="78" ry="38" fill="oklch(0.96 0.02 272)" opacity="0.45" />
-            <circle cx="88" cy="48" r="34" fill="oklch(0.96 0.02 270)" opacity="0.55" />
-            <circle cx="135" cy="50" r="28" fill="oklch(0.97 0.015 268)" opacity="0.5" />
-          </svg>
-
-          {/* Cloud 4 — ~35%, mid */}
-          <svg className="absolute top-[30%] left-[30%] w-[15%] md:w-[11%]" viewBox="0 0 240 140" fill="none">
-            <ellipse cx="120" cy="92" rx="110" ry="36" fill="oklch(0.93 0.025 276)" opacity="0.28" />
-            <ellipse cx="120" cy="75" rx="85" ry="40" fill="oklch(0.95 0.02 273)" opacity="0.42" />
-            <circle cx="95" cy="52" r="36" fill="oklch(0.96 0.02 270)" opacity="0.52" />
-            <circle cx="150" cy="55" r="30" fill="oklch(0.95 0.02 272)" opacity="0.48" />
-          </svg>
-
-          {/* Cloud 5 — ~45%, upper */}
-          <svg className="absolute top-[2%] left-[40%] w-[14%] md:w-[10%]" viewBox="0 0 200 120" fill="none">
-            <ellipse cx="100" cy="75" rx="92" ry="32" fill="oklch(0.95 0.02 275)" opacity="0.3" />
-            <ellipse cx="100" cy="60" rx="72" ry="35" fill="oklch(0.96 0.018 272)" opacity="0.42" />
-            <circle cx="82" cy="42" r="30" fill="oklch(0.96 0.02 270)" opacity="0.5" />
-            <circle cx="122" cy="44" r="26" fill="oklch(0.97 0.015 268)" opacity="0.45" />
-          </svg>
-
-          {/* Cloud 6 — ~55%, lower */}
-          <svg className="absolute top-[52%] left-[50%] w-[16%] md:w-[12%]" viewBox="0 0 260 150" fill="none">
-            <ellipse cx="130" cy="100" rx="120" ry="38" fill="oklch(0.93 0.025 278)" opacity="0.28" />
-            <ellipse cx="130" cy="82" rx="95" ry="42" fill="oklch(0.95 0.02 275)" opacity="0.42" />
-            <circle cx="108" cy="58" r="36" fill="oklch(0.95 0.025 272)" opacity="0.52" />
-            <circle cx="160" cy="60" r="30" fill="oklch(0.96 0.02 270)" opacity="0.48" />
-          </svg>
-
-          {/* Cloud 7 — ~65%, upper */}
-          <svg className="absolute top-[6%] left-[58%] w-[13%] md:w-[10%]" viewBox="0 0 200 120" fill="none">
-            <ellipse cx="100" cy="76" rx="90" ry="30" fill="oklch(0.94 0.02 276)" opacity="0.28" />
-            <ellipse cx="100" cy="60" rx="70" ry="34" fill="oklch(0.95 0.02 273)" opacity="0.4" />
-            <circle cx="82" cy="42" r="28" fill="oklch(0.96 0.02 270)" opacity="0.5" />
-            <circle cx="120" cy="45" r="24" fill="oklch(0.97 0.015 268)" opacity="0.45" />
-          </svg>
-
-          {/* Cloud 8 — ~75%, below sun (top 25%+) */}
-          <svg className="absolute top-[28%] left-[70%] w-[16%] md:w-[12%]" viewBox="0 0 260 150" fill="none">
-            <ellipse cx="130" cy="100" rx="120" ry="38" fill="oklch(0.92 0.03 278)" opacity="0.3" />
-            <ellipse cx="130" cy="80" rx="95" ry="44" fill="oklch(0.94 0.025 275)" opacity="0.42" />
-            <circle cx="105" cy="56" r="38" fill="oklch(0.95 0.02 272)" opacity="0.52" />
-            <circle cx="160" cy="58" r="32" fill="oklch(0.94 0.025 274)" opacity="0.48" />
-            <circle cx="130" cy="46" r="26" fill="oklch(0.96 0.02 268)" opacity="0.58" />
-          </svg>
-
-          {/* Cloud 9 — ~88%, mid-low (below sun) */}
-          <svg className="absolute top-[45%] left-[82%] w-[14%] md:w-[11%]" viewBox="0 0 220 130" fill="none">
-            <ellipse cx="110" cy="85" rx="100" ry="32" fill="oklch(0.93 0.025 278)" opacity="0.28" />
-            <ellipse cx="110" cy="68" rx="80" ry="38" fill="oklch(0.95 0.02 275)" opacity="0.42" />
-            <circle cx="90" cy="48" r="32" fill="oklch(0.95 0.02 272)" opacity="0.5" />
-            <circle cx="135" cy="50" r="28" fill="oklch(0.96 0.02 270)" opacity="0.45" />
-          </svg>
-
-          {/* Cloud 10 — right edge, lower */}
-          <svg className="absolute top-[60%] -right-[4%] w-[18%] md:w-[14%]" viewBox="0 0 280 160" fill="none">
-            <ellipse cx="140" cy="108" rx="130" ry="40" fill="oklch(0.92 0.03 278)" opacity="0.3" />
-            <ellipse cx="140" cy="88" rx="105" ry="48" fill="oklch(0.94 0.025 275)" opacity="0.42" />
-            <circle cx="115" cy="62" r="40" fill="oklch(0.95 0.02 272)" opacity="0.52" />
-            <circle cx="172" cy="65" r="35" fill="oklch(0.94 0.025 274)" opacity="0.48" />
-            <circle cx="140" cy="52" r="28" fill="oklch(0.96 0.02 270)" opacity="0.58" />
-          </svg>
+          {/* ── Clouds: continuous drift left-to-right ── */}
+          <div className="absolute inset-0 w-[200%] animate-clouds">
+            {/* First cloud set */}
+            <div className="absolute top-0 left-0 w-1/2 h-full">
+              <svg className="absolute top-[4%] -left-[4%] w-[18%] md:w-[14%]" viewBox="0 0 200 100" fill="none">
+                <path d="M10 82 C2 82 0 72 6 62 C0 50 12 34 32 28 C36 10 58 2 82 8 C94 0 118 0 132 12 C148 2 170 8 176 28 C190 26 200 42 192 58 C200 68 194 82 178 85 Z" fill="oklch(0.95 0.02 272)" opacity="0.5" />
+              </svg>
+              <svg className="absolute top-[48%] left-[6%] w-[16%] md:w-[12%]" viewBox="0 0 200 100" fill="none">
+                <path d="M8 78 C0 76 0 62 8 54 C2 40 16 24 38 20 C46 4 70 0 92 8 C108 0 130 6 138 22 C154 18 174 28 172 48 C182 56 180 72 166 78 Z" fill="oklch(0.94 0.02 274)" opacity="0.45" />
+              </svg>
+              <svg className="absolute top-[8%] left-[18%] w-[14%] md:w-[11%]" viewBox="0 0 200 100" fill="none">
+                <path d="M14 76 C4 76 2 66 8 56 C2 44 14 28 36 24 C42 8 64 2 86 10 C100 2 122 8 130 24 C144 20 160 30 156 48 C166 56 162 72 148 76 Z" fill="oklch(0.95 0.02 270)" opacity="0.45" />
+              </svg>
+              <svg className="absolute top-[30%] left-[30%] w-[15%] md:w-[11%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 80 C2 78 0 66 8 56 C0 44 14 26 36 22 C42 6 66 0 88 8 C102 0 124 4 132 20 C150 14 172 24 170 44 C182 52 178 72 164 78 Z" fill="oklch(0.94 0.025 273)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[2%] left-[40%] w-[14%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 78 C4 78 2 68 8 58 C2 46 14 32 34 28 C40 12 62 4 82 10 C96 4 116 8 124 22 C138 18 156 26 154 44 C164 52 160 68 148 74 Z" fill="oklch(0.95 0.02 272)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[52%] left-[50%] w-[16%] md:w-[12%]" viewBox="0 0 200 100" fill="none">
+                <path d="M10 82 C2 82 0 72 6 62 C0 50 12 34 32 28 C36 10 58 2 82 8 C94 0 118 0 132 12 C148 2 170 8 176 28 C190 26 200 42 192 58 C200 68 194 82 178 85 Z" fill="oklch(0.94 0.025 275)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[6%] left-[58%] w-[13%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M14 76 C4 76 2 66 8 56 C2 44 14 28 36 24 C42 8 64 2 86 10 C100 2 122 8 130 24 C144 20 160 30 156 48 C166 56 162 72 148 76 Z" fill="oklch(0.95 0.02 273)" opacity="0.4" />
+              </svg>
+              <svg className="absolute top-[28%] left-[70%] w-[16%] md:w-[12%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 80 C2 78 0 66 8 56 C0 44 14 26 36 22 C42 6 66 0 88 8 C102 0 124 4 132 20 C150 14 172 24 170 44 C182 52 178 72 164 78 Z" fill="oklch(0.93 0.025 276)" opacity="0.48" />
+              </svg>
+              <svg className="absolute top-[45%] left-[82%] w-[14%] md:w-[11%]" viewBox="0 0 200 100" fill="none">
+                <path d="M8 78 C0 76 0 62 8 54 C2 40 16 24 38 20 C46 4 70 0 92 8 C108 0 130 6 138 22 C154 18 174 28 172 48 C182 56 180 72 166 78 Z" fill="oklch(0.94 0.02 275)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[60%] left-[86%] w-[18%] md:w-[14%]" viewBox="0 0 200 100" fill="none">
+                <path d="M10 82 C2 82 0 72 6 62 C0 50 12 34 32 28 C36 10 58 2 82 8 C94 0 118 0 132 12 C148 2 170 8 176 28 C190 26 200 42 192 58 C200 68 194 82 178 85 Z" fill="oklch(0.93 0.025 276)" opacity="0.48" />
+              </svg>
+              <svg className="absolute top-[18%] left-[10%] w-[13%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 78 C4 78 2 68 8 58 C2 46 14 32 34 28 C40 12 62 4 82 10 C96 4 116 8 124 22 C138 18 156 26 154 44 C164 52 160 68 148 74 Z" fill="oklch(0.95 0.02 271)" opacity="0.45" />
+              </svg>
+              <svg className="absolute top-[40%] left-[22%] w-[15%] md:w-[11%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 80 C2 78 0 66 8 56 C0 44 14 26 36 22 C42 6 66 0 88 8 C102 0 124 4 132 20 C150 14 172 24 170 44 C182 52 178 72 164 78 Z" fill="oklch(0.94 0.025 274)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[14%] left-[35%] w-[12%] md:w-[9%]" viewBox="0 0 200 100" fill="none">
+                <path d="M14 76 C4 76 2 66 8 56 C2 44 14 28 36 24 C42 8 64 2 86 10 C100 2 122 8 130 24 C144 20 160 30 156 48 C166 56 162 72 148 76 Z" fill="oklch(0.96 0.02 270)" opacity="0.4" />
+              </svg>
+              <svg className="absolute top-[36%] left-[54%] w-[14%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M8 78 C0 76 0 62 8 54 C2 40 16 24 38 20 C46 4 70 0 92 8 C108 0 130 6 138 22 C154 18 174 28 172 48 C182 56 180 72 166 78 Z" fill="oklch(0.94 0.02 274)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[10%] left-[76%] w-[13%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 78 C4 78 2 68 8 58 C2 46 14 32 34 28 C40 12 62 4 82 10 C96 4 116 8 124 22 C138 18 156 26 154 44 C164 52 160 68 148 74 Z" fill="oklch(0.95 0.02 272)" opacity="0.4" />
+              </svg>
+              <svg className="absolute top-[32%] left-[2%] w-[14%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M10 82 C2 82 0 72 6 62 C0 50 12 34 32 28 C36 10 58 2 82 8 C94 0 118 0 132 12 C148 2 170 8 176 28 C190 26 200 42 192 58 C200 68 194 82 178 85 Z" fill="oklch(0.94 0.02 273)" opacity="0.38" />
+              </svg>
+              <svg className="absolute top-[56%] left-[14%] w-[12%] md:w-[9%]" viewBox="0 0 200 100" fill="none">
+                <path d="M8 78 C0 76 0 62 8 54 C2 40 16 24 38 20 C46 4 70 0 92 8 C108 0 130 6 138 22 C154 18 174 28 172 48 C182 56 180 72 166 78 Z" fill="oklch(0.95 0.02 275)" opacity="0.4" />
+              </svg>
+              <svg className="absolute top-[12%] left-[26%] w-[13%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M14 76 C4 76 2 66 8 56 C2 44 14 28 36 24 C42 8 64 2 86 10 C100 2 122 8 130 24 C144 20 160 30 156 48 C166 56 162 72 148 76 Z" fill="oklch(0.95 0.02 271)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[50%] left-[34%] w-[14%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 80 C2 78 0 66 8 56 C0 44 14 26 36 22 C42 6 66 0 88 8 C102 0 124 4 132 20 C150 14 172 24 170 44 C182 52 178 72 164 78 Z" fill="oklch(0.94 0.025 274)" opacity="0.38" />
+              </svg>
+              <svg className="absolute top-[22%] left-[44%] w-[12%] md:w-[9%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 78 C4 78 2 68 8 58 C2 46 14 32 34 28 C40 12 62 4 82 10 C96 4 116 8 124 22 C138 18 156 26 154 44 C164 52 160 68 148 74 Z" fill="oklch(0.95 0.02 272)" opacity="0.4" />
+              </svg>
+              <svg className="absolute top-[42%] left-[46%] w-[13%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M10 82 C2 82 0 72 6 62 C0 50 12 34 32 28 C36 10 58 2 82 8 C94 0 118 0 132 12 C148 2 170 8 176 28 C190 26 200 42 192 58 C200 68 194 82 178 85 Z" fill="oklch(0.94 0.02 275)" opacity="0.36" />
+              </svg>
+              <svg className="absolute top-[48%] left-[62%] w-[14%] md:w-[11%]" viewBox="0 0 200 100" fill="none">
+                <path d="M8 78 C0 76 0 62 8 54 C2 40 16 24 38 20 C46 4 70 0 92 8 C108 0 130 6 138 22 C154 18 174 28 172 48 C182 56 180 72 166 78 Z" fill="oklch(0.93 0.025 276)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[16%] left-[66%] w-[12%] md:w-[9%]" viewBox="0 0 200 100" fill="none">
+                <path d="M14 76 C4 76 2 66 8 56 C2 44 14 28 36 24 C42 8 64 2 86 10 C100 2 122 8 130 24 C144 20 160 30 156 48 C166 56 162 72 148 76 Z" fill="oklch(0.95 0.02 273)" opacity="0.38" />
+              </svg>
+              <svg className="absolute top-[38%] left-[78%] w-[13%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 80 C2 78 0 66 8 56 C0 44 14 26 36 22 C42 6 66 0 88 8 C102 0 124 4 132 20 C150 14 172 24 170 44 C182 52 178 72 164 78 Z" fill="oklch(0.94 0.025 274)" opacity="0.4" />
+              </svg>
+              <svg className="absolute top-[20%] left-[90%] w-[14%] md:w-[11%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 78 C4 78 2 68 8 58 C2 46 14 32 34 28 C40 12 62 4 82 10 C96 4 116 8 124 22 C138 18 156 26 154 44 C164 52 160 68 148 74 Z" fill="oklch(0.95 0.02 271)" opacity="0.42" />
+              </svg>
+            </div>
+            {/* Second cloud set (duplicate for seamless loop) */}
+            <div className="absolute top-0 left-1/2 w-1/2 h-full">
+              <svg className="absolute top-[4%] -left-[4%] w-[18%] md:w-[14%]" viewBox="0 0 200 100" fill="none">
+                <path d="M10 82 C2 82 0 72 6 62 C0 50 12 34 32 28 C36 10 58 2 82 8 C94 0 118 0 132 12 C148 2 170 8 176 28 C190 26 200 42 192 58 C200 68 194 82 178 85 Z" fill="oklch(0.95 0.02 272)" opacity="0.5" />
+              </svg>
+              <svg className="absolute top-[48%] left-[6%] w-[16%] md:w-[12%]" viewBox="0 0 200 100" fill="none">
+                <path d="M8 78 C0 76 0 62 8 54 C2 40 16 24 38 20 C46 4 70 0 92 8 C108 0 130 6 138 22 C154 18 174 28 172 48 C182 56 180 72 166 78 Z" fill="oklch(0.94 0.02 274)" opacity="0.45" />
+              </svg>
+              <svg className="absolute top-[8%] left-[18%] w-[14%] md:w-[11%]" viewBox="0 0 200 100" fill="none">
+                <path d="M14 76 C4 76 2 66 8 56 C2 44 14 28 36 24 C42 8 64 2 86 10 C100 2 122 8 130 24 C144 20 160 30 156 48 C166 56 162 72 148 76 Z" fill="oklch(0.95 0.02 270)" opacity="0.45" />
+              </svg>
+              <svg className="absolute top-[30%] left-[30%] w-[15%] md:w-[11%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 80 C2 78 0 66 8 56 C0 44 14 26 36 22 C42 6 66 0 88 8 C102 0 124 4 132 20 C150 14 172 24 170 44 C182 52 178 72 164 78 Z" fill="oklch(0.94 0.025 273)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[2%] left-[40%] w-[14%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 78 C4 78 2 68 8 58 C2 46 14 32 34 28 C40 12 62 4 82 10 C96 4 116 8 124 22 C138 18 156 26 154 44 C164 52 160 68 148 74 Z" fill="oklch(0.95 0.02 272)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[52%] left-[50%] w-[16%] md:w-[12%]" viewBox="0 0 200 100" fill="none">
+                <path d="M10 82 C2 82 0 72 6 62 C0 50 12 34 32 28 C36 10 58 2 82 8 C94 0 118 0 132 12 C148 2 170 8 176 28 C190 26 200 42 192 58 C200 68 194 82 178 85 Z" fill="oklch(0.94 0.025 275)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[6%] left-[58%] w-[13%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M14 76 C4 76 2 66 8 56 C2 44 14 28 36 24 C42 8 64 2 86 10 C100 2 122 8 130 24 C144 20 160 30 156 48 C166 56 162 72 148 76 Z" fill="oklch(0.95 0.02 273)" opacity="0.4" />
+              </svg>
+              <svg className="absolute top-[28%] left-[70%] w-[16%] md:w-[12%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 80 C2 78 0 66 8 56 C0 44 14 26 36 22 C42 6 66 0 88 8 C102 0 124 4 132 20 C150 14 172 24 170 44 C182 52 178 72 164 78 Z" fill="oklch(0.93 0.025 276)" opacity="0.48" />
+              </svg>
+              <svg className="absolute top-[45%] left-[82%] w-[14%] md:w-[11%]" viewBox="0 0 200 100" fill="none">
+                <path d="M8 78 C0 76 0 62 8 54 C2 40 16 24 38 20 C46 4 70 0 92 8 C108 0 130 6 138 22 C154 18 174 28 172 48 C182 56 180 72 166 78 Z" fill="oklch(0.94 0.02 275)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[60%] left-[86%] w-[18%] md:w-[14%]" viewBox="0 0 200 100" fill="none">
+                <path d="M10 82 C2 82 0 72 6 62 C0 50 12 34 32 28 C36 10 58 2 82 8 C94 0 118 0 132 12 C148 2 170 8 176 28 C190 26 200 42 192 58 C200 68 194 82 178 85 Z" fill="oklch(0.93 0.025 276)" opacity="0.48" />
+              </svg>
+              <svg className="absolute top-[18%] left-[10%] w-[13%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 78 C4 78 2 68 8 58 C2 46 14 32 34 28 C40 12 62 4 82 10 C96 4 116 8 124 22 C138 18 156 26 154 44 C164 52 160 68 148 74 Z" fill="oklch(0.95 0.02 271)" opacity="0.45" />
+              </svg>
+              <svg className="absolute top-[40%] left-[22%] w-[15%] md:w-[11%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 80 C2 78 0 66 8 56 C0 44 14 26 36 22 C42 6 66 0 88 8 C102 0 124 4 132 20 C150 14 172 24 170 44 C182 52 178 72 164 78 Z" fill="oklch(0.94 0.025 274)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[14%] left-[35%] w-[12%] md:w-[9%]" viewBox="0 0 200 100" fill="none">
+                <path d="M14 76 C4 76 2 66 8 56 C2 44 14 28 36 24 C42 8 64 2 86 10 C100 2 122 8 130 24 C144 20 160 30 156 48 C166 56 162 72 148 76 Z" fill="oklch(0.96 0.02 270)" opacity="0.4" />
+              </svg>
+              <svg className="absolute top-[36%] left-[54%] w-[14%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M8 78 C0 76 0 62 8 54 C2 40 16 24 38 20 C46 4 70 0 92 8 C108 0 130 6 138 22 C154 18 174 28 172 48 C182 56 180 72 166 78 Z" fill="oklch(0.94 0.02 274)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[10%] left-[76%] w-[13%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 78 C4 78 2 68 8 58 C2 46 14 32 34 28 C40 12 62 4 82 10 C96 4 116 8 124 22 C138 18 156 26 154 44 C164 52 160 68 148 74 Z" fill="oklch(0.95 0.02 272)" opacity="0.4" />
+              </svg>
+              <svg className="absolute top-[32%] left-[2%] w-[14%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M10 82 C2 82 0 72 6 62 C0 50 12 34 32 28 C36 10 58 2 82 8 C94 0 118 0 132 12 C148 2 170 8 176 28 C190 26 200 42 192 58 C200 68 194 82 178 85 Z" fill="oklch(0.94 0.02 273)" opacity="0.38" />
+              </svg>
+              <svg className="absolute top-[56%] left-[14%] w-[12%] md:w-[9%]" viewBox="0 0 200 100" fill="none">
+                <path d="M8 78 C0 76 0 62 8 54 C2 40 16 24 38 20 C46 4 70 0 92 8 C108 0 130 6 138 22 C154 18 174 28 172 48 C182 56 180 72 166 78 Z" fill="oklch(0.95 0.02 275)" opacity="0.4" />
+              </svg>
+              <svg className="absolute top-[12%] left-[26%] w-[13%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M14 76 C4 76 2 66 8 56 C2 44 14 28 36 24 C42 8 64 2 86 10 C100 2 122 8 130 24 C144 20 160 30 156 48 C166 56 162 72 148 76 Z" fill="oklch(0.95 0.02 271)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[50%] left-[34%] w-[14%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 80 C2 78 0 66 8 56 C0 44 14 26 36 22 C42 6 66 0 88 8 C102 0 124 4 132 20 C150 14 172 24 170 44 C182 52 178 72 164 78 Z" fill="oklch(0.94 0.025 274)" opacity="0.38" />
+              </svg>
+              <svg className="absolute top-[22%] left-[44%] w-[12%] md:w-[9%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 78 C4 78 2 68 8 58 C2 46 14 32 34 28 C40 12 62 4 82 10 C96 4 116 8 124 22 C138 18 156 26 154 44 C164 52 160 68 148 74 Z" fill="oklch(0.95 0.02 272)" opacity="0.4" />
+              </svg>
+              <svg className="absolute top-[42%] left-[46%] w-[13%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M10 82 C2 82 0 72 6 62 C0 50 12 34 32 28 C36 10 58 2 82 8 C94 0 118 0 132 12 C148 2 170 8 176 28 C190 26 200 42 192 58 C200 68 194 82 178 85 Z" fill="oklch(0.94 0.02 275)" opacity="0.36" />
+              </svg>
+              <svg className="absolute top-[48%] left-[62%] w-[14%] md:w-[11%]" viewBox="0 0 200 100" fill="none">
+                <path d="M8 78 C0 76 0 62 8 54 C2 40 16 24 38 20 C46 4 70 0 92 8 C108 0 130 6 138 22 C154 18 174 28 172 48 C182 56 180 72 166 78 Z" fill="oklch(0.93 0.025 276)" opacity="0.42" />
+              </svg>
+              <svg className="absolute top-[16%] left-[66%] w-[12%] md:w-[9%]" viewBox="0 0 200 100" fill="none">
+                <path d="M14 76 C4 76 2 66 8 56 C2 44 14 28 36 24 C42 8 64 2 86 10 C100 2 122 8 130 24 C144 20 160 30 156 48 C166 56 162 72 148 76 Z" fill="oklch(0.95 0.02 273)" opacity="0.38" />
+              </svg>
+              <svg className="absolute top-[38%] left-[78%] w-[13%] md:w-[10%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 80 C2 78 0 66 8 56 C0 44 14 26 36 22 C42 6 66 0 88 8 C102 0 124 4 132 20 C150 14 172 24 170 44 C182 52 178 72 164 78 Z" fill="oklch(0.94 0.025 274)" opacity="0.4" />
+              </svg>
+              <svg className="absolute top-[20%] left-[90%] w-[14%] md:w-[11%]" viewBox="0 0 200 100" fill="none">
+                <path d="M12 78 C4 78 2 68 8 58 C2 46 14 32 34 28 C40 12 62 4 82 10 C96 4 116 8 124 22 C138 18 156 26 154 44 C164 52 160 68 148 74 Z" fill="oklch(0.95 0.02 271)" opacity="0.42" />
+              </svg>
+            </div>
+          </div>
 
           {/* Sparkles */}
           <svg className="absolute top-[15%] left-[22%] w-5 h-5" viewBox="0 0 20 20" fill="none">
@@ -200,7 +275,7 @@ export default function MarketingPage() {
 
           {/* Sabot sailboat — cartoonish, sits between water layers */}
           <svg
-            className="absolute bottom-[20px] right-[8%] md:right-[14%] w-[350px] sm:w-[430px] md:w-[540px] drop-shadow-lg animate-sailboat"
+            className="absolute bottom-[20px] -right-[8%] sm:-right-[4%] md:right-[14%] w-[350px] sm:w-[430px] md:w-[540px] drop-shadow-lg animate-sailboat"
             viewBox="0 0 200 260"
             fill="none"
             style={{ zIndex: 2 }}
@@ -268,8 +343,8 @@ export default function MarketingPage() {
           </svg>
         </div>
 
-        {/* Content — vertically centered */}
-        <div className="relative z-10 mx-auto max-w-6xl px-6 min-h-[75vh] flex items-center">
+        {/* Content — top-aligned on mobile so it clears the sailboat, centered on md+ */}
+        <div className="relative z-10 mx-auto max-w-6xl px-6 min-h-[75vh] flex items-start pt-28 sm:pt-32 md:items-center md:pt-0">
           <div className="max-w-2xl">
             {/* Tag — tight to heading */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-sm text-primary text-sm font-medium mb-4 border border-primary/10">
@@ -286,7 +361,7 @@ export default function MarketingPage() {
             </h1>
 
             {/* Subheadline — closer to heading than to CTA */}
-            <p className="text-lg text-muted-foreground max-w-md leading-relaxed mb-14">
+            <p className="text-lg text-muted-foreground max-w-md leading-relaxed mb-8 md:mb-14">
               Built for Sabot sailors and beyond — track every young
               sailor&apos;s development with expert rubrics and AI&nbsp;insights.
             </p>
