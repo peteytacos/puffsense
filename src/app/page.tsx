@@ -1,12 +1,16 @@
 import { PuffLogo } from "@/components/puff-logo";
 import { Button } from "@/components/ui/button";
+import { ScrollNav } from "@/components/scroll-nav";
 import {
+  Anchor,
   BarChart3,
   BookOpen,
   Brain,
   ChevronRight,
   Medal,
   MessageSquare,
+  Ship,
+  Star,
   Target,
   TreePine,
   Users,
@@ -15,17 +19,17 @@ import {
 
 export default function MarketingPage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Nav */}
-      <nav className="border-b border-border/50 bg-background/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
+    <div className="min-h-screen bg-background overflow-hidden">
+      {/* Nav — fixed, blurs on scroll */}
+      <ScrollNav>
+        <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-5">
           <div className="flex items-center gap-2.5">
             <PuffLogo className="w-7 h-7" />
-            <span className="font-semibold text-base tracking-tight">
+            <span className="font-display font-semibold text-lg tracking-tight">
               PuffSense
             </span>
           </div>
-          <div className="flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-8">
             <a
               href="#features"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -39,274 +43,662 @@ export default function MarketingPage() {
               How It Works
             </a>
             <a
-              href="#pricing"
+              href="#testimonials"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              Pricing
+              Coaches
             </a>
-            <div className="flex items-center gap-3">
-              <Button size="sm" variant="ghost" asChild>
-                <a href="/login">Log In</a>
-              </Button>
-              <Button size="sm" asChild>
-                <a href="/signup">Get Started</a>
-              </Button>
-            </div>
+            <a
+              href="#faq"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              FAQ
+            </a>
+          </div>
+          <div className="flex items-center gap-3">
+            <Button size="sm" variant="ghost" asChild>
+              <a href="/login">Log In</a>
+            </Button>
+            <Button size="sm" className="rounded-full px-5" asChild>
+              <a href="/signup">Get Started</a>
+            </Button>
           </div>
         </div>
-      </nav>
+      </ScrollNav>
 
-      {/* Hero */}
-      <section className="pt-24 pb-16 px-6">
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border/60 bg-card/50 text-sm text-muted-foreground mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            From Dinghies to D1
-          </div>
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-            Smarter coaching for
-            <br />
-            <span className="text-primary">developing sailors</span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-            AI-driven feedback that surfaces insights before sailors know to
-            ask. Powered by expert rubrics, coach evaluations, and real
-            conditions data.
-          </p>
-          <div className="flex gap-3 justify-center">
-            <Button size="lg" asChild>
-              <a href="/signup">
-                Start Free
-                <ChevronRight className="w-4 h-4 ml-1" />
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <a href="#features">See Features</a>
-            </Button>
+      {/* Hero — full bleed */}
+      <section className="relative min-h-[75vh]">
+        {/* Full-bleed background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.96_0.02_270)] via-[oklch(0.97_0.015_265)] to-background" />
+
+        {/* ── Clouds & sky (full bleed, behind content) ── */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Sun — upper right, unobstructed */}
+          <svg
+            className="absolute top-[4%] right-[12%] md:right-[16%] w-[180px] md:w-[240px]"
+            viewBox="0 0 260 260"
+            fill="none"
+          >
+            <circle cx="130" cy="130" r="120" fill="oklch(0.94 0.06 80)" opacity="0.35" />
+            <circle cx="130" cy="130" r="80" fill="oklch(0.93 0.08 78)" opacity="0.5" />
+            <circle cx="130" cy="130" r="48" fill="oklch(0.95 0.07 75)" opacity="0.7" />
+          </svg>
+
+          {/* ── Clouds: evenly spread, clear of sun (sun ≈ 70-95% x, 0-15% y) ── */}
+
+          {/* Cloud 1 — left edge, upper */}
+          <svg className="absolute top-[4%] -left-[4%] w-[18%] md:w-[14%]" viewBox="0 0 300 180" fill="none">
+            <ellipse cx="150" cy="115" rx="140" ry="45" fill="oklch(0.93 0.025 275)" opacity="0.3" />
+            <ellipse cx="150" cy="95" rx="110" ry="55" fill="oklch(0.95 0.02 272)" opacity="0.5" />
+            <circle cx="120" cy="70" r="48" fill="oklch(0.96 0.02 270)" opacity="0.6" />
+            <circle cx="185" cy="72" r="42" fill="oklch(0.95 0.025 272)" opacity="0.55" />
+            <circle cx="150" cy="58" r="36" fill="oklch(0.97 0.015 265)" opacity="0.65" />
+          </svg>
+
+          {/* Cloud 2 — ~12%, lower */}
+          <svg className="absolute top-[48%] left-[6%] w-[16%] md:w-[12%]" viewBox="0 0 250 140" fill="none">
+            <ellipse cx="125" cy="90" rx="115" ry="38" fill="oklch(0.94 0.02 275)" opacity="0.3" />
+            <ellipse cx="125" cy="72" rx="90" ry="42" fill="oklch(0.95 0.02 272)" opacity="0.45" />
+            <circle cx="100" cy="52" r="38" fill="oklch(0.96 0.02 270)" opacity="0.55" />
+            <circle cx="155" cy="55" r="32" fill="oklch(0.95 0.02 272)" opacity="0.5" />
+          </svg>
+
+          {/* Cloud 3 — ~22%, upper */}
+          <svg className="absolute top-[8%] left-[18%] w-[14%] md:w-[11%]" viewBox="0 0 220 130" fill="none">
+            <ellipse cx="110" cy="82" rx="100" ry="34" fill="oklch(0.94 0.02 275)" opacity="0.3" />
+            <ellipse cx="110" cy="65" rx="78" ry="38" fill="oklch(0.96 0.02 272)" opacity="0.45" />
+            <circle cx="88" cy="48" r="34" fill="oklch(0.96 0.02 270)" opacity="0.55" />
+            <circle cx="135" cy="50" r="28" fill="oklch(0.97 0.015 268)" opacity="0.5" />
+          </svg>
+
+          {/* Cloud 4 — ~35%, mid */}
+          <svg className="absolute top-[30%] left-[30%] w-[15%] md:w-[11%]" viewBox="0 0 240 140" fill="none">
+            <ellipse cx="120" cy="92" rx="110" ry="36" fill="oklch(0.93 0.025 276)" opacity="0.28" />
+            <ellipse cx="120" cy="75" rx="85" ry="40" fill="oklch(0.95 0.02 273)" opacity="0.42" />
+            <circle cx="95" cy="52" r="36" fill="oklch(0.96 0.02 270)" opacity="0.52" />
+            <circle cx="150" cy="55" r="30" fill="oklch(0.95 0.02 272)" opacity="0.48" />
+          </svg>
+
+          {/* Cloud 5 — ~45%, upper */}
+          <svg className="absolute top-[2%] left-[40%] w-[14%] md:w-[10%]" viewBox="0 0 200 120" fill="none">
+            <ellipse cx="100" cy="75" rx="92" ry="32" fill="oklch(0.95 0.02 275)" opacity="0.3" />
+            <ellipse cx="100" cy="60" rx="72" ry="35" fill="oklch(0.96 0.018 272)" opacity="0.42" />
+            <circle cx="82" cy="42" r="30" fill="oklch(0.96 0.02 270)" opacity="0.5" />
+            <circle cx="122" cy="44" r="26" fill="oklch(0.97 0.015 268)" opacity="0.45" />
+          </svg>
+
+          {/* Cloud 6 — ~55%, lower */}
+          <svg className="absolute top-[52%] left-[50%] w-[16%] md:w-[12%]" viewBox="0 0 260 150" fill="none">
+            <ellipse cx="130" cy="100" rx="120" ry="38" fill="oklch(0.93 0.025 278)" opacity="0.28" />
+            <ellipse cx="130" cy="82" rx="95" ry="42" fill="oklch(0.95 0.02 275)" opacity="0.42" />
+            <circle cx="108" cy="58" r="36" fill="oklch(0.95 0.025 272)" opacity="0.52" />
+            <circle cx="160" cy="60" r="30" fill="oklch(0.96 0.02 270)" opacity="0.48" />
+          </svg>
+
+          {/* Cloud 7 — ~65%, upper */}
+          <svg className="absolute top-[6%] left-[58%] w-[13%] md:w-[10%]" viewBox="0 0 200 120" fill="none">
+            <ellipse cx="100" cy="76" rx="90" ry="30" fill="oklch(0.94 0.02 276)" opacity="0.28" />
+            <ellipse cx="100" cy="60" rx="70" ry="34" fill="oklch(0.95 0.02 273)" opacity="0.4" />
+            <circle cx="82" cy="42" r="28" fill="oklch(0.96 0.02 270)" opacity="0.5" />
+            <circle cx="120" cy="45" r="24" fill="oklch(0.97 0.015 268)" opacity="0.45" />
+          </svg>
+
+          {/* Cloud 8 — ~75%, below sun (top 25%+) */}
+          <svg className="absolute top-[28%] left-[70%] w-[16%] md:w-[12%]" viewBox="0 0 260 150" fill="none">
+            <ellipse cx="130" cy="100" rx="120" ry="38" fill="oklch(0.92 0.03 278)" opacity="0.3" />
+            <ellipse cx="130" cy="80" rx="95" ry="44" fill="oklch(0.94 0.025 275)" opacity="0.42" />
+            <circle cx="105" cy="56" r="38" fill="oklch(0.95 0.02 272)" opacity="0.52" />
+            <circle cx="160" cy="58" r="32" fill="oklch(0.94 0.025 274)" opacity="0.48" />
+            <circle cx="130" cy="46" r="26" fill="oklch(0.96 0.02 268)" opacity="0.58" />
+          </svg>
+
+          {/* Cloud 9 — ~88%, mid-low (below sun) */}
+          <svg className="absolute top-[45%] left-[82%] w-[14%] md:w-[11%]" viewBox="0 0 220 130" fill="none">
+            <ellipse cx="110" cy="85" rx="100" ry="32" fill="oklch(0.93 0.025 278)" opacity="0.28" />
+            <ellipse cx="110" cy="68" rx="80" ry="38" fill="oklch(0.95 0.02 275)" opacity="0.42" />
+            <circle cx="90" cy="48" r="32" fill="oklch(0.95 0.02 272)" opacity="0.5" />
+            <circle cx="135" cy="50" r="28" fill="oklch(0.96 0.02 270)" opacity="0.45" />
+          </svg>
+
+          {/* Cloud 10 — right edge, lower */}
+          <svg className="absolute top-[60%] -right-[4%] w-[18%] md:w-[14%]" viewBox="0 0 280 160" fill="none">
+            <ellipse cx="140" cy="108" rx="130" ry="40" fill="oklch(0.92 0.03 278)" opacity="0.3" />
+            <ellipse cx="140" cy="88" rx="105" ry="48" fill="oklch(0.94 0.025 275)" opacity="0.42" />
+            <circle cx="115" cy="62" r="40" fill="oklch(0.95 0.02 272)" opacity="0.52" />
+            <circle cx="172" cy="65" r="35" fill="oklch(0.94 0.025 274)" opacity="0.48" />
+            <circle cx="140" cy="52" r="28" fill="oklch(0.96 0.02 270)" opacity="0.58" />
+          </svg>
+
+          {/* Sparkles */}
+          <svg className="absolute top-[15%] left-[22%] w-5 h-5" viewBox="0 0 20 20" fill="none">
+            <path d="M10 0L12 8L20 10L12 12L10 20L8 12L0 10L8 8L10 0Z" fill="oklch(0.93 0.08 78)" opacity="0.6" />
+          </svg>
+          <svg className="absolute top-[10%] left-[50%] w-3.5 h-3.5" viewBox="0 0 20 20" fill="none">
+            <path d="M10 0L12 8L20 10L12 12L10 20L8 12L0 10L8 8L10 0Z" fill="oklch(0.90 0.06 280)" opacity="0.45" />
+          </svg>
+          <svg className="absolute top-[38%] right-[12%] w-3 h-3" viewBox="0 0 20 20" fill="none">
+            <path d="M10 0L12 8L20 10L12 12L10 20L8 12L0 10L8 8L10 0Z" fill="oklch(0.92 0.07 78)" opacity="0.5" />
+          </svg>
+          <svg className="absolute bottom-[40%] left-[5%] w-3 h-3" viewBox="0 0 20 20" fill="none">
+            <path d="M10 0L12 8L20 10L12 12L10 20L8 12L0 10L8 8L10 0Z" fill="oklch(0.91 0.07 80)" opacity="0.5" />
+          </svg>
+
+          {/* Water back layer — full width, taller, soft fade at bottom */}
+          <svg
+            className="absolute bottom-0 left-0 w-full h-[160px]"
+            viewBox="0 0 1440 160"
+            fill="none"
+            preserveAspectRatio="none"
+            style={{ maskImage: "linear-gradient(to bottom, black 40%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, black 40%, transparent 100%)" }}
+          >
+            <path
+              d="M0 40 C60 22,120 55,180 40 C240 22,300 55,360 40 C420 22,480 55,540 40 C600 22,660 55,720 40 C780 22,840 55,900 40 C960 22,1020 55,1080 40 C1140 22,1200 55,1260 40 C1320 22,1380 55,1440 40 L1440 160 L0 160Z"
+              fill="oklch(0.86 0.07 232)"
+              opacity="0.35"
+            />
+          </svg>
+
+          {/* Sabot sailboat — cartoonish, sits between water layers */}
+          <svg
+            className="absolute bottom-[20px] right-[8%] md:right-[14%] w-[350px] sm:w-[430px] md:w-[540px] drop-shadow-lg animate-sailboat"
+            viewBox="0 0 200 260"
+            fill="none"
+            style={{ zIndex: 2 }}
+          >
+            {/* Mast — near bow, connected to deck */}
+            <line x1="58" y1="20" x2="60" y2="204" stroke="oklch(0.55 0.03 260)" strokeWidth="4" strokeLinecap="round" />
+
+            {/* Boom */}
+            <line x1="60" y1="200" x2="165" y2="193" stroke="oklch(0.55 0.03 260)" strokeWidth="3.5" strokeLinecap="round" />
+
+            {/* Sail — bold triangle, slightly curved */}
+            <path
+              d="M59 24 L60 198 L163 191 Q125 105 59 24Z"
+              fill="oklch(0.97 0.015 270)"
+            />
+            <path
+              d="M59 24 L60 198 L163 191 Q125 105 59 24Z"
+              fill="url(#heroSailGrad)"
+              opacity="0.5"
+            />
+
+            {/* Hull — Sabot: curved bow sweep, flat bottom, flat transom, low profile */}
+            <path
+              d="M35 204 C36 216 38 228 44 234 C48 238 54 238 60 238 L170 234 L170 204 Z"
+              fill="oklch(0.94 0.025 260)"
+            />
+            {/* Gunwale top edge */}
+            <path
+              d="M35 204 L170 204"
+              stroke="oklch(0.80 0.08 248)"
+              strokeWidth="3"
+              strokeLinecap="round"
+              fill="none"
+            />
+            {/* Hull accent stripe */}
+            <path
+              d="M39 222 C60 224 130 224 170 222"
+              stroke="oklch(0.80 0.08 248)"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              opacity="0.45"
+            />
+
+            <defs>
+              <linearGradient id="heroSailGrad" x1="59" y1="24" x2="163" y2="191" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="oklch(0.98 0.01 268)" />
+                <stop offset="1" stopColor="oklch(0.88 0.05 250)" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          {/* Water front layer — overlaps hull bottom, soft fade */}
+          <svg
+            className="absolute bottom-0 left-0 w-full h-[160px]"
+            viewBox="0 0 1440 160"
+            fill="none"
+            preserveAspectRatio="none"
+            style={{ zIndex: 3, maskImage: "linear-gradient(to bottom, black 40%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, black 40%, transparent 100%)" }}
+          >
+            <path
+              d="M0 65 C80 45,160 78,240 60 C320 42,400 78,480 60 C560 42,640 78,720 60 C800 42,880 78,960 60 C1040 42,1120 78,1200 60 C1280 42,1360 78,1440 60 L1440 160 L0 160Z"
+              fill="oklch(0.83 0.08 236)"
+              opacity="0.3"
+            />
+          </svg>
+        </div>
+
+        {/* Content — vertically centered */}
+        <div className="relative z-10 mx-auto max-w-6xl px-6 min-h-[75vh] flex items-center">
+          <div className="max-w-2xl">
+            {/* Tag — tight to heading */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-sm text-primary text-sm font-medium mb-4 border border-primary/10">
+              <Wind className="w-3.5 h-3.5" />
+              AI-powered sailing coach
+            </div>
+
+            {/* Heading — always 2 lines */}
+            <h1 className="font-display text-[2.75rem] sm:text-[3.5rem] md:text-[4.25rem] font-bold tracking-tight leading-[1.08] mb-5">
+              <span className="block">Your smart</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-[oklch(0.55_0.16_300)] pb-2">
+                sailing companion
+              </span>
+            </h1>
+
+            {/* Subheadline — closer to heading than to CTA */}
+            <p className="text-lg text-muted-foreground max-w-md leading-relaxed mb-14">
+              Built for Sabot sailors and beyond — track every young
+              sailor&apos;s development with expert rubrics and AI&nbsp;insights.
+            </p>
+
+            {/* CTA — most separation, anchors the lockup */}
+            <div className="relative inline-block group">
+              <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-primary/40 via-[oklch(0.55_0.16_300)]/30 to-accent/30 blur-xl opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-110 transition-all duration-500 ease-out" />
+              <Button size="lg" className="relative rounded-full px-10 h-12 text-base shadow-[0_8px_30px_-4px] shadow-primary/30" asChild>
+                <a href="/signup">
+                  Get Started
+                  <ChevronRight className="w-4 h-4 ml-1 cta-arrow" />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Dashboard Preview */}
-      <section className="pb-20 px-6">
-        <div className="mx-auto max-w-5xl">
-          <div className="rounded-xl border border-border/60 bg-card p-1.5 shadow-2xl shadow-primary/5">
-            <div className="rounded-lg bg-background border border-border/40 p-6 md:p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <PuffLogo className="w-6 h-6 text-primary" />
-                <span className="text-sm font-medium">Dashboard</span>
-                <div className="flex-1" />
-                <div className="flex gap-2">
-                  <div className="w-20 h-6 rounded bg-muted" />
-                  <div className="w-16 h-6 rounded bg-primary/20" />
-                </div>
-              </div>
-              <div className="grid grid-cols-4 gap-3 mb-6">
-                {["12 Sailors", "8 Rubrics", "24 Sessions", "47 Insights"].map(
-                  (label) => (
-                    <div
-                      key={label}
-                      className="rounded-lg border border-border/40 bg-card p-3"
-                    >
-                      <div className="text-xs text-muted-foreground mb-1">
-                        {label.split(" ")[1]}
-                      </div>
-                      <div className="text-lg font-semibold">
-                        {label.split(" ")[0]}
-                      </div>
-                    </div>
-                  )
-                )}
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-lg border border-border/40 bg-card p-4 h-32">
-                  <div className="text-xs text-muted-foreground mb-3">
-                    Recent Evaluations
-                  </div>
-                  <div className="space-y-2">
-                    <div className="h-2.5 rounded bg-muted w-full" />
-                    <div className="h-2.5 rounded bg-muted w-3/4" />
-                    <div className="h-2.5 rounded bg-muted w-5/6" />
-                  </div>
-                </div>
-                <div className="rounded-lg border border-border/40 bg-card p-4 h-32">
-                  <div className="text-xs text-muted-foreground mb-3">
-                    AI Insights
-                  </div>
-                  <div className="space-y-2">
-                    <div className="h-2.5 rounded bg-primary/15 w-full" />
-                    <div className="h-2.5 rounded bg-primary/15 w-2/3" />
-                    <div className="h-2.5 rounded bg-primary/15 w-4/5" />
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* Features — "The Smartest All-in-One Coaching Platform" */}
+      <section id="features" className="py-20 px-6">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-14">
+            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              The Smartest All-in-One
+              <br />
+              Coaching Platform
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+              Smarter coaching starts with PuffSense. Track, evaluate, and get
+              AI-powered insights — all in one place.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <BigFeatureCard
+              icon={<Brain className="w-5 h-5" />}
+              iconBg="bg-primary/10 text-primary"
+              title="AI Coaching Insights"
+              description="Anticipatory feedback surfaces what to focus on before they know to ask."
+            />
+            <BigFeatureCard
+              icon={<Target className="w-5 h-5" />}
+              iconBg="bg-accent/15 text-accent-foreground"
+              title="Rubric Progression"
+              description="Know exactly what's needed to advance to the next boat class."
+            />
+            <BigFeatureCard
+              icon={<BookOpen className="w-5 h-5" />}
+              iconBg="bg-[oklch(0.85_0.08_160)] text-[oklch(0.35_0.14_160)]"
+              title="Session Journal"
+              description="Sailors log reflections. AI uses them to personalize coaching."
+            />
+            <BigFeatureCard
+              icon={<BarChart3 className="w-5 h-5" />}
+              iconBg="bg-[oklch(0.55_0.16_300)]/10 text-[oklch(0.55_0.16_300)]"
+              title="Adaptive Dashboard"
+              description="UI adapts by level — playful for Opti, data-driven for racing."
+            />
           </div>
         </div>
       </section>
 
       {/* For Clubs / For Parents */}
       <section className="py-16 px-6">
-        <div className="mx-auto max-w-5xl grid md:grid-cols-2 gap-4">
-          <div className="rounded-xl border border-border/60 bg-card p-6">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Users className="w-4 h-4 text-primary" />
+        <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-6">
+          {/* For Clubs */}
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-primary/[0.08] to-primary/[0.03] border border-primary/10 p-8 md:p-10">
+            <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-primary/[0.06] blur-2xl" />
+            <div className="relative">
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-5">
+                <Anchor className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-semibold text-lg">For Sailing Clubs</h3>
+              <h3 className="font-display text-2xl font-bold mb-3">For Sailing Clubs</h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Define rubrics for each boat class, assign coaches, and give
+                every family clarity on what their sailor needs to advance. Manage
+                your entire program from one dashboard.
+              </p>
+              <Button variant="outline" className="rounded-full" asChild>
+                <a href="/signup/club">
+                  Set Up Your Club
+                  <ChevronRight className="w-4 h-4 ml-1" />
+                </a>
+              </Button>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Define rubrics for each boat class, assign coaches, and give every
-              family clarity on what their sailor needs to advance.
-            </p>
           </div>
-          <div className="rounded-xl border border-border/60 bg-card p-6">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center">
-                <Target className="w-4 h-4 text-accent" />
+
+          {/* For Parents */}
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-accent/[0.1] to-accent/[0.03] border border-accent/15 p-8 md:p-10">
+            <div className="absolute bottom-0 left-0 w-40 h-40 rounded-full bg-accent/[0.08] blur-2xl" />
+            <div className="relative">
+              <div className="w-12 h-12 rounded-2xl bg-accent/15 flex items-center justify-center mb-5">
+                <Ship className="w-6 h-6 text-accent-foreground" />
               </div>
-              <h3 className="font-semibold text-lg">For Sailing Parents</h3>
+              <h3 className="font-display text-2xl font-bold mb-3">For Sailing Parents</h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                No club? No problem. Track your child&apos;s development
+                independently with AI-powered rubrics, evaluations, and coaching
+                insights tailored to their level.
+              </p>
+              <Button variant="outline" className="rounded-full" asChild>
+                <a href="/signup/independent">
+                  Start as Parent
+                  <ChevronRight className="w-4 h-4 ml-1" />
+                </a>
+              </Button>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              No club? No problem. Track your child&apos;s development
-              independently with AI-powered rubrics and coaching insights.
-            </p>
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section id="features" className="py-20 px-6">
+      {/* Testimonials */}
+      <section id="testimonials" className="py-20 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.04] to-transparent pointer-events-none" />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              Why Coaches Love PuffSense
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Join a community of coaches who get it all done with PuffSense.
+            </p>
+            <div className="mt-6">
+              <Button className="rounded-full px-6" asChild>
+                <a href="/signup">Join Them Today</a>
+              </Button>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-3 gap-5">
+            <TestimonialCard
+              quote="PuffSense took my scattered evaluation notes and turned them into clear progression paths. My parents finally understand where their kids stand."
+              name="Holly W."
+              role="Opti Coach, ABYC"
+              stars={5}
+            />
+            <TestimonialCard
+              quote="The AI insights are incredible — it's like having an experienced coaching assistant that never misses a pattern across 20+ sailors."
+              name="Alex G."
+              role="Head Coach, Lake Norman YC"
+              stars={5}
+            />
+            <TestimonialCard
+              quote="I love being a coach but hated the paperwork. PuffSense made evaluations so much easier — and the parents love the automated progress reports."
+              name="Sebastian M."
+              role="420 Coach, SFYC"
+              stars={5}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* All Features Grid */}
+      <section className="py-20 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight mb-3">
-              Everything your sailor needs
+            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              Why PuffSense Stands Out
             </h2>
-            <p className="text-muted-foreground max-w-lg mx-auto">
-              Coach expertise, rubric-based progression, and AI insights in one
-              platform.
+            <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+              See how PuffSense combines intelligent coaching tools with a
+              beautiful, adaptive interface.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            <FeatureCard
-              icon={<Brain className="w-4 h-4" />}
-              title="AI Coaching Insights"
-              description="Feedback that surfaces what to focus on — before they know to ask."
-            />
-            <FeatureCard
-              icon={<Target className="w-4 h-4" />}
-              title="Rubric Progression"
-              description="Know exactly what's needed to advance to the next boat class."
-            />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <FeatureCard
               icon={<TreePine className="w-4 h-4" />}
+              iconBg="bg-[oklch(0.85_0.08_160)] text-[oklch(0.35_0.14_160)]"
               title="Skill Tree"
-              description="Visual map from current level to the next with locked, active, and mastered skills."
+              description="Visual progression from current level to the next — locked, active, and mastered."
             />
             <FeatureCard
               icon={<MessageSquare className="w-4 h-4" />}
+              iconBg="bg-primary/10 text-primary"
               title="AI Rubric Builder"
-              description="Chat with AI to create custom rubrics tailored to your sailor."
-            />
-            <FeatureCard
-              icon={<BookOpen className="w-4 h-4" />}
-              title="Session Journal"
-              description="Sailors log reflections. AI uses them to personalize coaching."
+              description="Chat with AI to create custom rubrics tailored to your sailors."
             />
             <FeatureCard
               icon={<Medal className="w-4 h-4" />}
+              iconBg="bg-accent/15 text-accent-foreground"
               title="Achievements"
               description="Milestone badges keep young sailors motivated and on track."
             />
             <FeatureCard
-              icon={<BarChart3 className="w-4 h-4" />}
-              title="Adaptive Dashboard"
-              description="UI adapts by level: playful for Opti, data-driven for racing."
-            />
-            <FeatureCard
               icon={<Wind className="w-4 h-4" />}
+              iconBg="bg-[oklch(0.55_0.16_300)]/10 text-[oklch(0.55_0.16_300)]"
               title="Conditions Tracking"
               description="Wind, weather, and water logged alongside every evaluation."
             />
             <FeatureCard
               icon={<Users className="w-4 h-4" />}
+              iconBg="bg-primary/10 text-primary"
               title="Parent Dashboard"
               description="See progress, rubric status, and AI-recommended next steps."
+            />
+            <FeatureCard
+              icon={<Brain className="w-4 h-4" />}
+              iconBg="bg-[oklch(0.85_0.08_160)] text-[oklch(0.35_0.14_160)]"
+              title="Smart Scheduling"
+              description="Sessions adapt to conditions, sailor availability, and progression."
             />
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 px-6 border-t border-border/40">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold tracking-tight text-center mb-12">
+      <section id="how-it-works" className="py-20 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/[0.04] to-transparent pointer-events-none" />
+        <div className="relative mx-auto max-w-4xl">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-center mb-14">
             How It Works
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <StepCard
               step={1}
+              color="bg-primary/10 text-primary border-primary/20"
               title="Sign Up"
-              description="Join your club's program or start tracking independently as a parent."
+              description="Join your club's program or start tracking independently as a parent or coach."
             />
             <StepCard
               step={2}
+              color="bg-accent/15 text-accent-foreground border-accent/20"
               title="Set Up Rubrics"
               description="Use club rubrics or build custom ones with AI for your sailor's boat class."
             />
             <StepCard
               step={3}
+              color="bg-[oklch(0.85_0.08_160)] text-[oklch(0.35_0.14_160)] border-[oklch(0.35_0.14_160)]/10"
               title="Get Insights"
-              description="AI generates focus areas, goal nudges, and recommendations after each evaluation."
+              description="AI surfaces focus areas, goal nudges, and recommendations after each session."
             />
           </div>
         </div>
       </section>
 
-      {/* Pricing */}
-      <section id="pricing" className="py-20 px-6 border-t border-border/40">
-        <div className="mx-auto max-w-md text-center">
-          <h2 className="text-3xl font-bold tracking-tight mb-3">Pricing</h2>
-          <p className="text-muted-foreground mb-8">
-            Free and premium tiers for families and clubs. Coming soon.
-          </p>
-          <Button size="lg" asChild>
-            <a href="/signup">Join the Waitlist</a>
+      {/* FAQ */}
+      <section id="faq" className="py-20 px-6">
+        <div className="mx-auto max-w-2xl">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-3">
+              FAQ
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Great answers are kind of our thing. Here are some frequently
+              asked questions.
+            </p>
+          </div>
+          <div className="space-y-3">
+            <FaqItem
+              question="How do I know I can trust PuffSense?"
+              answer="PuffSense was built by competitive sailing coaches and parents. Our AI models are trained on expert coaching rubrics and validated by US Sailing-certified instructors."
+            />
+            <FaqItem
+              question="How will you keep my sailor's data private?"
+              answer="We use Supabase with row-level security. Only authorized coaches and parents can access sailor data. We never share or sell personal information."
+            />
+            <FaqItem
+              question="Do you offer a free trial?"
+              answer="Yes! PuffSense is free during early access. We'll always have a generous free tier for individual coaches and parents."
+            />
+            <FaqItem
+              question="Can I use PuffSense for other boat classes?"
+              answer="Absolutely. We support Opti, Sabot, 420, Laser/ILCA, FJ, Sunfish, Club 420, and more. You can also create custom rubrics for any boat class."
+            />
+            <FaqItem
+              question="What can't PuffSense do?"
+              answer="PuffSense doesn't replace on-the-water coaching. It's a tool that helps coaches be more effective and gives families visibility into development."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Big Quote CTA */}
+      <section className="py-20 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.06] via-accent/[0.04] to-[oklch(0.55_0.16_300)]/[0.04] pointer-events-none" />
+        <div className="relative mx-auto max-w-4xl text-center">
+          <div className="font-display text-5xl md:text-6xl font-bold tracking-tight leading-[1.15] mb-8">
+            <span className="text-muted-foreground/30">&ldquo;</span>
+            PuffSense has made coaching{" "}
+            <span className="italic">so much</span> more{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-foreground">
+              effective
+            </span>
+            <span className="text-muted-foreground/30">&rdquo;</span>
+          </div>
+          <Button size="lg" className="rounded-full px-10 h-12 text-base" asChild>
+            <a href="/signup">Get Started</a>
           </Button>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border/50 py-8 px-6">
-        <div className="mx-auto max-w-6xl flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <PuffLogo className="w-5 h-5 text-muted-foreground" />
-            <span className="text-sm text-muted-foreground">PuffSense</span>
+      {/* Final CTA */}
+      <section className="py-20 px-6">
+        <div className="mx-auto max-w-4xl">
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[oklch(0.2_0.04_260)] to-[oklch(0.15_0.03_250)] p-10 md:p-16 text-center">
+            <div className="absolute top-0 right-0 w-60 h-60 rounded-full bg-primary/20 blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-accent/10 blur-3xl" />
+            <div className="relative">
+              <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
+                Because that scoring question
+                <br />
+                shouldn&apos;t keep you up at night.
+              </h2>
+              <p className="text-white/60 text-lg mb-8 max-w-lg mx-auto">
+                Let AI handle the patterns while you focus on what matters —
+                being on the water.
+              </p>
+              <Button
+                size="lg"
+                className="rounded-full px-10 h-12 text-base bg-white text-[oklch(0.15_0.03_250)] hover:bg-white/90"
+                asChild
+              >
+                <a href="/signup">Get Started Free</a>
+              </Button>
+            </div>
           </div>
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} PuffSense
-          </p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border/40 py-10 px-6">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <PuffLogo className="w-6 h-6" />
+                <span className="font-display font-semibold">PuffSense</span>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Make your coaching journey feel confident, supported, and
+                data-driven.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-medium text-sm mb-3">Why PuffSense</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#features" className="hover:text-foreground transition-colors">Features</a></li>
+                <li><a href="#how-it-works" className="hover:text-foreground transition-colors">How It Works</a></li>
+                <li><a href="#testimonials" className="hover:text-foreground transition-colors">Coaches</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-medium text-sm mb-3">Resources</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#faq" className="hover:text-foreground transition-colors">FAQ</a></li>
+                <li><a href="#" className="hover:text-foreground transition-colors">Blog</a></li>
+                <li><a href="#" className="hover:text-foreground transition-colors">Support</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-medium text-sm mb-3">Get Started</h4>
+              <Button className="rounded-full w-full" asChild>
+                <a href="/signup">Sign Up Free</a>
+              </Button>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center justify-between pt-6 border-t border-border/30 gap-4">
+            <p className="text-sm text-muted-foreground">
+              &copy; {new Date().getFullYear()} PuffSense. All rights reserved.
+            </p>
+            <div className="flex gap-6 text-sm text-muted-foreground">
+              <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
   );
 }
 
-function FeatureCard({
+/* ─── Component helpers ─── */
+
+function BigFeatureCard({
   icon,
+  iconBg,
   title,
   description,
 }: {
   icon: React.ReactNode;
+  iconBg: string;
   title: string;
   description: string;
 }) {
   return (
-    <div className="group rounded-xl border border-border/60 bg-card p-5 hover:border-border transition-colors">
-      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-3">
+    <div className="rounded-2xl border border-border/50 bg-card p-6 hover:shadow-lg hover:shadow-primary/[0.04] transition-all hover:-translate-y-0.5">
+      <div className={`w-11 h-11 rounded-xl ${iconBg} flex items-center justify-center mb-4`}>
         {icon}
       </div>
-      <h3 className="font-medium text-sm mb-1">{title}</h3>
+      <h3 className="font-display font-semibold mb-2">{title}</h3>
+      <p className="text-muted-foreground text-sm leading-relaxed">
+        {description}
+      </p>
+    </div>
+  );
+}
+
+function FeatureCard({
+  icon,
+  iconBg,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  iconBg: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="group rounded-2xl border border-border/50 bg-card p-5 hover:border-border/80 transition-all">
+      <div className={`w-9 h-9 rounded-xl ${iconBg} flex items-center justify-center mb-3`}>
+        {icon}
+      </div>
+      <h3 className="font-display font-medium text-sm mb-1.5">{title}</h3>
       <p className="text-muted-foreground text-sm leading-relaxed">
         {description}
       </p>
@@ -316,22 +708,81 @@ function FeatureCard({
 
 function StepCard({
   step,
+  color,
   title,
   description,
 }: {
   step: number;
+  color: string;
   title: string;
   description: string;
 }) {
   return (
     <div className="text-center">
-      <div className="w-10 h-10 rounded-full border-2 border-primary text-primary flex items-center justify-center text-sm font-semibold mx-auto mb-4">
+      <div
+        className={`w-14 h-14 rounded-2xl border-2 ${color} flex items-center justify-center text-lg font-bold mx-auto mb-5`}
+      >
         {step}
       </div>
-      <h3 className="font-semibold mb-2">{title}</h3>
+      <h3 className="font-display font-semibold text-lg mb-2">{title}</h3>
       <p className="text-muted-foreground text-sm leading-relaxed">
         {description}
       </p>
     </div>
+  );
+}
+
+function TestimonialCard({
+  quote,
+  name,
+  role,
+  stars,
+}: {
+  quote: string;
+  name: string;
+  role: string;
+  stars: number;
+}) {
+  return (
+    <div className="rounded-2xl border border-border/50 bg-card p-6 hover:shadow-lg hover:shadow-primary/[0.04] transition-all">
+      <div className="flex gap-0.5 mb-4">
+        {Array.from({ length: stars }).map((_, i) => (
+          <Star
+            key={i}
+            className="w-4 h-4 fill-accent text-accent"
+          />
+        ))}
+      </div>
+      <p className="text-sm leading-relaxed mb-5">{quote}</p>
+      <div className="flex items-center gap-3">
+        <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary text-sm font-semibold">
+          {name.charAt(0)}
+        </div>
+        <div>
+          <div className="text-sm font-medium">{name}</div>
+          <div className="text-xs text-muted-foreground">{role}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FaqItem({
+  question,
+  answer,
+}: {
+  question: string;
+  answer: string;
+}) {
+  return (
+    <details className="group rounded-2xl border border-border/50 bg-card">
+      <summary className="flex items-center justify-between p-5 cursor-pointer text-sm font-medium hover:text-primary transition-colors list-none [&::-webkit-details-marker]:hidden">
+        {question}
+        <ChevronRight className="w-4 h-4 text-muted-foreground group-open:rotate-90 transition-transform shrink-0 ml-4" />
+      </summary>
+      <div className="px-5 pb-5 text-sm text-muted-foreground leading-relaxed -mt-1">
+        {answer}
+      </div>
+    </details>
   );
 }
