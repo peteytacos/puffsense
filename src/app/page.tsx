@@ -67,12 +67,12 @@ export default function MarketingPage() {
       </ScrollNav>
 
       {/* Hero — full bleed */}
-      <section className="relative min-h-svh md:min-h-[75vh]">
-        {/* Full-bleed background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.96_0.02_270)] via-[oklch(0.97_0.015_265)] to-background" />
+      <section className="relative min-h-svh md:min-h-[75vh] pt-[env(safe-area-inset-top)]">
+        {/* Full-bleed background gradient — extends behind status bar on mobile */}
+        <div className="absolute inset-0 -top-[env(safe-area-inset-top)] bg-gradient-to-b from-[oklch(0.96_0.02_270)] via-[oklch(0.97_0.015_265)] to-background" />
 
         {/* ── Clouds & sky (full bleed, behind content) ── */}
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 -top-[env(safe-area-inset-top)] overflow-hidden">
           {/* Sun — upper right, unobstructed */}
           <svg
             className="absolute top-[4%] right-[12%] md:right-[16%] w-[180px] md:w-[240px]"
@@ -245,7 +245,7 @@ export default function MarketingPage() {
 
           {/* Sabot sailboat — cartoonish, sits between water layers */}
           <svg
-            className="absolute bottom-[80px] -right-[2%] h-[calc(100svh-400px)] w-auto max-h-[400px] sm:max-h-[500px] md:bottom-[20px] md:right-[14%] md:h-auto md:w-[540px] md:max-h-none drop-shadow-lg animate-sailboat"
+            className="absolute bottom-[100px] -right-[2%] h-[calc(100svh-520px)] w-auto max-h-[280px] sm:max-h-[340px] md:bottom-[20px] md:right-[14%] md:h-auto md:w-[540px] md:max-h-none drop-shadow-lg animate-sailboat"
             viewBox="0 0 200 260"
             fill="none"
             preserveAspectRatio="xMidYMax meet"

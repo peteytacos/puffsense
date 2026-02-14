@@ -16,6 +16,12 @@ export const metadata: Metadata = {
     "AI-driven coaching system that delivers anticipatory, context-aware feedback for developing sailors. From Dinghies to D1.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
