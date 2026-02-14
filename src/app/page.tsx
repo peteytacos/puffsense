@@ -67,7 +67,7 @@ export default function MarketingPage() {
       </ScrollNav>
 
       {/* Hero — full bleed */}
-      <section className="relative min-h-[75vh]">
+      <section className="relative min-h-svh md:min-h-[75vh]">
         {/* Full-bleed background gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.96_0.02_270)] via-[oklch(0.97_0.015_265)] to-background" />
 
@@ -275,7 +275,7 @@ export default function MarketingPage() {
 
           {/* Sabot sailboat — cartoonish, sits between water layers */}
           <svg
-            className="absolute bottom-[20px] -right-[8%] sm:-right-[4%] md:right-[14%] w-[350px] sm:w-[430px] md:w-[540px] drop-shadow-lg animate-sailboat"
+            className="absolute bottom-[20px] -right-[8%] sm:-right-[4%] md:right-[14%] w-[300px] sm:w-[400px] md:w-[540px] drop-shadow-lg animate-sailboat"
             viewBox="0 0 200 260"
             fill="none"
             style={{ zIndex: 2 }}
@@ -344,7 +344,7 @@ export default function MarketingPage() {
         </div>
 
         {/* Content — top-aligned on mobile so it clears the sailboat, centered on md+ */}
-        <div className="relative z-10 mx-auto max-w-6xl px-6 min-h-[75vh] flex items-start pt-28 sm:pt-32 md:items-center md:pt-0">
+        <div className="relative z-10 mx-auto max-w-6xl px-6 min-h-svh md:min-h-[75vh] flex items-start pt-24 sm:pt-28 md:items-center md:pt-0">
           <div className="max-w-2xl">
             {/* Tag — tight to heading */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-sm text-primary text-sm font-medium mb-4 border border-primary/10">
